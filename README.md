@@ -31,7 +31,47 @@ df_us = df[(df['job_country'] == 'United States') & (df['job_title_short'] == 'D
 
 Each Jupyter notebook for this project aimed at investigating specific aspects of the data job market. Here’s how I approached each question:
 
-## 1. What are the most demanded skills for the top 3 most popular data roles?
+## 1. Counts of Job Locations for Data Analyst in the US by Company
+
+To count the job locations for Data Analyst roles in the US, I filtered out Data Analyst positions by location and extracted the top 10 locations. Similarly, I extracted the top 10 companies offering Data Analyst roles by count and finally visualized both.
+
+View my notebook with detailed steps here: [2_Skill_Demand](2_Skill_Demand.ipynb).
+
+### Visualize Data
+
+```python
+
+df_plot = df_us['company_name'].value_counts().head(10).to_frame()
+
+sns.set_theme(style='ticks')
+sns.barplot(data=df_plot,x='count',y='company_name',hue='count', legend=False)
+# plt.xlim(0,7000)
+sns.despine() # to Remove border
+plt.title('Counts of Job Locations for Data Analyst in the US by Company')
+plt.xlabel('Number of Jobs')
+plt.ylabel('Company Name')
+plt.show()
+
+```
+
+### Results
+
+![Likelihood of Skills Requested in the US Job Postings](Images\1eda.png)
+
+*Horizontal Bar graph visualizing the counts of Job Locations for Data Analyst in the US by Company*
+
+### Insights:
+
+- On first position Robert Half and Insight Global dominate Data Analyst job postings in the US.
+
+- Dice and UnitedHealth Group show strong hiring, reflecting demand in both tech and healthcare.
+
+- Citi, Centene Corporation, and Booz Allen Hamilton highlight demand across finance and consulting sectors.
+
+- Overall, a few major recruiters drive most listings, but steady hiring exists across large corporations too.
+
+
+## 2. What are the most demanded skills for the top 3 most popular data roles?
 
 To find the most demanded skills for the top 3 most popular data roles. I filtered out those positions by which ones were the most popular, and got the top 5 skills for these top 3 roles. This query highlights the most popular job titles and their top skills, showing which skills I should pay attention to depending on the role I'm targeting. 
 
@@ -76,7 +116,7 @@ plt.show()
 - Data Engineers require more specialized technical skills (AWS, Azure, Spark) compared to Data Analysts and Data Scientists who are expected to be proficient in more general data management and analysis tools (Excel, Tableau).
 - Python is a versatile skill, highly demanded across all three roles, but most prominently for Data Scientists (72%) and Data Engineers (65%).
 
-## 2. How are in-demand skills trending for Data Analysts?
+## 3. How are in-demand skills trending for Data Analysts?
 
 To find how skills are trending in 2023 for Data Analysts, I filtered data analyst positions and grouped the skills by the month of the job postings. This got me the top 5 skills of data analysts by month, showing how popular skills were throughout 2023.
 
@@ -116,7 +156,7 @@ plt.show()
 - Excel experienced a significant increase in demand starting around September, surpassing both Python and Tableau by the end of the year.
 - Both Python and Tableau show relatively stable demand throughout the year with some fluctuations but remain essential skills for data analysts. Power BI, while less demanded compared to the others, shows a slight upward trend towards the year's end.
 
-## 3.Highest paids median salary by companies and skills are in-demand skills trending for Data Analysts
+## 4.Highest paids median salary by companies and skills are in-demand skills trending for Data Analysts
 
 To identify the highest-paying roles and skills, I only got jobs in the United States and looked at their median salary. But first I looked at the salary distributions of common data jobs like Data Scientist, Data Engineer, and Data Analyst, to get an idea of which jobs are paid the most. 
 
