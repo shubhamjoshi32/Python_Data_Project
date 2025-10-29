@@ -56,7 +56,7 @@ plt.show()
 
 ### Results
 
-![Likelihood of Skills Requested in the US Job Postings](Images\1eda.png)
+![Likelihood of Skills Requested in the US Job Postings](Images/1eda.png)
 
 *Horizontal Bar graph visualizing the counts of Job Locations for Data Analyst in the US by Company*
 
